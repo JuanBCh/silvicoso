@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Cancha from "./Components/Cancha/Cancha";
+import Formulario from "./Components/Formulario/Formulario";
 
 function App() {
+  const [equipo, setEquipo] = useState({
+    directorTecnico: "",
+    alineacion: "",
+    jugadores: [
+      {
+        nombre: "",
+        posicion: "",
+      },
+    ],
+    suplentes: [
+      {
+        nombre: "",
+        posicion: "",
+      },
+    ],
+    cuerpotecnico: {
+      DT: "",
+      AT: "",
+      CM: "",
+    },
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Formulario equipo={equipo} setEquipo={setEquipo} />
+      <Cancha equipo={equipo} />
     </div>
   );
 }
